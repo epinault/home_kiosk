@@ -1,0 +1,148 @@
+
+
+<div class="wrapper">
+  <div class="box a">
+    <div class="weather">
+      <div class="weather-heading">
+      <span>Seattle</span>
+      <span class="temp-switch"><a href="#">°F</a> / <a href="#">°C</a> </span>
+      </div>
+      <div class="weather-day day1">
+        <div class="day-title"><b>Sun</b></div>
+        <div class="icon"><img src="https://duckduckgo.com/assets/weather/svg/40px/rain-alt.svg" /></div>
+        <div class="temperature">21°</div>
+      </div>
+      <div class="weather-day day2">
+        <div class="day-title"><b>Sun</b></div>
+        <div class="icon"><img src="https://duckduckgo.com/assets/weather/svg/40px/rain-alt.svg" /></div>
+        <div class="temperature">21°</div>
+      </div>
+      <div class="weather-day day3">
+        <div class="day-title"><b>Sun</b></div>
+        <div class="icon"><img src="https://duckduckgo.com/assets/weather/svg/40px/rain-alt.svg" /></div>
+        <div class="temperature">21°</div>
+      </div>
+      <div class="weather-day day4">
+        <div class="day-title"><b>Sun</b></div>
+        <div class="icon"><img src="https://duckduckgo.com/assets/weather/svg/40px/rain-alt.svg" /></div>
+        <div class="temperature">21°</div>
+      </div>
+      <div class="weather-day day5">
+        <div class="day-title"><b>Sun</b></div>
+        <div class="icon"><img src="https://duckduckgo.com/assets/weather/svg/40px/rain-alt.svg" /></div>
+        <div class="temperature">21°</div>
+      </div>
+      <div class="weather-day day6">
+        <div class="day-title"><b>Sun</b></div>
+        <div class="icon"><img src="https://duckduckgo.com/assets/weather/svg/40px/rain-alt.svg" /></div>
+        <div class="temperature">21°</div>
+      </div>
+      <div class="weather-day day7">
+        <div class="day-title"><b>Sun</b></div>
+        <div class="icon"><img src="https://duckduckgo.com/assets/weather/svg/40px/rain-alt.svg" /></div>
+        <div class="temperature">21°</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="">
+    <div class="yokai">
+      <img src="//vignette.wikia.nocookie.net/yokaiwatch/images/0/07/Jibanyan.PNG/revision/latest?cb=20150811171356" />
+    </div>
+  </div>
+  <div class="box c">
+    <div class="traffic-map">
+      <img src="//images.wsdot.wa.gov/nwflow/flowmaps/bridges.gif" />
+    </div>
+  </div>
+  <div class="box d">D</div>
+  <div class="box e">E</div>
+  <div class="box f">
+    <div class="menu">
+      <div class="menu-day">
+          <h3>Monday</h3>
+          <table>
+            <thead>
+              <tr><td>Lunch</td><td>Dinner</td></tr>
+            </thead>
+            <tbody>
+              <tr><td>
+              Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td><td> Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td></tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="menu-day">
+          <h3>Monday</h3>
+          <table>
+            <thead>
+              <tr><td>Lunch</td><td>Dinner</td></tr>
+            </thead>
+            <tbody>
+              <tr><td>
+              Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td><td> Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td></tr>
+            </tbody>
+          </table>
+      </div>
+        <div class="menu-day">
+          <h3>Monday</h3>
+          <table>
+            <thead>
+              <tr><td>Lunch</td><td>Dinner</td></tr>
+            </thead>
+            <tbody>
+              <tr><td>
+              Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td><td> Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td></tr>
+            </tbody>
+          </table>
+      </div>
+              <div class="menu-day">
+          <h3>Monday</h3>
+          <table>
+            <thead>
+              <tr><td>Lunch</td><td>Dinner</td></tr>
+            </thead>
+            <tbody>
+              <tr><td>
+              Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td><td> Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td></tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+  <%# <div id="messages" class="container">
+</div>
+<div id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input id="username" type="text" class="form-control" placeholder="username">
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+      <div class="col-sm-10">
+        <input id="message-input" class="form-control" />
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+  </div>
+</div> %>
