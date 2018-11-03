@@ -15,7 +15,7 @@ config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 # involved with firmware updates.
 
 config :shoehorn,
-  init: [:nerves_runtime],
+  init: [:nerves_runtime, :nerves_init_gadget, :nerves_network],
   app: Mix.Project.config()[:app]
 
 # Use Ringlogger as the logger backend and remove :console.
@@ -24,23 +24,54 @@ config :shoehorn,
 
 config :logger, backends: [RingLogger]
 
+key = Path.join(System.user_home!(), ".ssh/id_rsa.pub")
+unless File.exists?(key), do: Mix.raise("No SSH Keys found. Please generate an ssh key")
+
+config :nerves_firmware_ssh,
+  authorized_keys: [
+    File.read!(key)
+  ]
+
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
 
 config :nerves_init_gadget,
   ifname: "eth0",
-  address_method: :dhcp,
-  mdns_domain: "kiosk.local",
+  address_method: :dhcpd,
+  mdns_domain: "nerves.local",
   node_name: "kiosk",
-  node_host: :mdns_domain
+  node_host: :mdns_domain,
+  ssh_console_port: 22
 
 config :webengine_kiosk,
-  fullscreen: false,
-  homepage: "http://localhost:4000",
-  background_color: "black",
-  blank_image: "/var/www/assets/nerves.png",
-  progress: true,
-  sounds: false
+  uid: "kiosk",
+  gid: "kiosk",
+  data_dir: "/root/kiosk",
+  homepage: "http://localhost"
+
+config :dashboard_web, DashboardWebWeb.Endpoint,
+  url: [host: "localhost"],
+  http: [port: 80],
+  secret_key_base: "123456",
+  root: Path.dirname(__DIR__),
+  server: true,
+  render_errors: [view: DashboardWebWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Nerves.PubSub, adapter: Phoenix.PubSub.PG2],
+  code_reloader: false,
+  check_origin: false
+
+config :nerves_network,
+  regulatory_domain: "US"
+
+config :nerves_network, :default,
+  wlan0: [
+    # System.get_env("Ici c est Paris"),
+    ssid: "Ici c est Paris",
+    # System.get_env("NERVES_NETWORK_PSK"),
+    psk: "4129mlking",
+    # String.to_atom(System.get_env("NERVES_NETWORK_MGMT"))
+    key_mgmt: :"WPA-PSK"
+  ]
 
 # import_config "#{Mix.Project.config[:target]}.exs"

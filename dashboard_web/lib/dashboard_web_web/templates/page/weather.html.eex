@@ -1,0 +1,12 @@
+<div class="weather-heading">
+    <span>Seattle</span>
+    <span class="temp-switch"><a href="#">°F</a> / <a href="#">°C</a> </span>
+</div>
+
+ <%= for {day, index} <- Enum.with_index(assigns[:data]) do %>
+    <div class="weather-day day<%= index + 1 %>">
+        <div class="day-title"><b><%= day["day"] %></b></div>
+        <div class="icon"><img src="https://duckduckgo.com/assets/weather/svg/40px/<%= day["icon"] %>-alt.svg" /></div>
+        <div class="temperature"><%= day["low"] %></div>
+    </div>
+<% end %>

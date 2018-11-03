@@ -29,3 +29,13 @@ To start your Nerves app:
   * Official website: http://www.nerves-project.org/
   * Discussion Slack elixir-lang #nerves ([Invite](https://elixir-slackin.herokuapp.com/))
   * Source: https://github.com/nerves-project/nerves
+
+
+
+QMAKE=/usr/local/opt/qt@5.11/bin/qmake MIX_TARGET=rpi3 mix deps.get
+QMAKE=/usr/local/opt/qt@5.11/bin/qmake MIX_TARGET=rpi3 mix firmware
+QMAKE=/usr/local/opt/qt@5.11/bin/qmake MIX_TARGET=rpi3 mix firmware.push --passphrase Jivet9manu1! nerves.local
+
+
+iex --cookie training --name host@0.0.0.0  => then add a node  kiosk@nerves.local to see the target apps running
+

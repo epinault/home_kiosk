@@ -12,7 +12,10 @@ defmodule DashboardNerves do
       :world
 
   """
+  require Logger
+
   def hello do
+    Logger.debug("hello")
     :world
   end
 end
