@@ -44,34 +44,4 @@ config :nerves_init_gadget,
   node_host: :mdns_domain,
   ssh_console_port: 22
 
-config :webengine_kiosk,
-  uid: "kiosk",
-  gid: "kiosk",
-  data_dir: "/root/kiosk",
-  homepage: "http://localhost"
-
-config :dashboard_web, DashboardWebWeb.Endpoint,
-  url: [host: "localhost"],
-  http: [port: 80],
-  secret_key_base: "123456",
-  root: Path.dirname(__DIR__),
-  server: true,
-  render_errors: [view: DashboardWebWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Nerves.PubSub, adapter: Phoenix.PubSub.PG2],
-  code_reloader: false,
-  check_origin: false
-
-config :nerves_network,
-  regulatory_domain: "US"
-
-config :nerves_network, :default,
-  wlan0: [
-    # System.get_env("Ici c est Paris"),
-    ssid: "Ici c est Paris",
-    # System.get_env("NERVES_NETWORK_PSK"),
-    psk: "4129mlking",
-    # String.to_atom(System.get_env("NERVES_NETWORK_MGMT"))
-    key_mgmt: :"WPA-PSK"
-  ]
-
-# import_config "#{Mix.Project.config[:target]}.exs"
+import_config "#{Mix.Project.config()[:target]}.exs"

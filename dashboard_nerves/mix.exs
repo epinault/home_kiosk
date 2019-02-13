@@ -41,8 +41,7 @@ defmodule DashboardNerves.MixProject do
       {:nerves, "~> 1.3", runtime: false},
       {:shoehorn, "~> 0.4"},
       {:ring_logger, "~> 0.4"},
-      {:webengine_kiosk, "~> 0.2"},
-      {:dashboard_web, path: "../dashboard_web"}
+      {:webengine_kiosk, "~> 0.2"}
     ] ++ deps(@target)
   end
 
@@ -59,6 +58,11 @@ defmodule DashboardNerves.MixProject do
     ] ++ system(target)
   end
 
-  defp system("rpi3"), do: [{:kiosk_system_rpi3, "~> 1.0", runtime: false}]
+  defp system("rpi3"),
+    do: [
+      {:dashboard_web, path: "../dashboard_web"},
+      {:kiosk_system_rpi3, "~> 1.0", runtime: false}
+    ]
+
   defp system(target), do: Mix.raise("Unknown MIX_TARGET: #{target}")
 end
