@@ -5,7 +5,7 @@ defmodule DashboardWebWeb.RoomChannel do
   def join("rooms:lobby", message, socket) do
     Process.flag(:trap_exit, true)
     # send(self, {"weather:update", message})
-    send(self, "weather:update")
+    send(self(), "weather:update")
 
     {:ok, socket}
   end
@@ -24,7 +24,6 @@ defmodule DashboardWebWeb.RoomChannel do
   #   push(socket, "new:msg", %{user: "SYSTEM", body: "ping"})
   #   {:noreply, socket}
   # end
-  require IEx
 
   def handle_info("weather:update", socket) do
     res = DashboardWeb.Weather.render(47.5599289, -122.2984476)

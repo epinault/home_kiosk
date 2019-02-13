@@ -2,19 +2,17 @@
   <div class="box a">
     <div class="weather">
     </div>
-
-  </div>
-  <div class="">
-    <div class="yokai">
-      <img src="//vignette.wikia.nocookie.net/yokaiwatch/images/0/07/Jibanyan.PNG/revision/latest?cb=20150811171356" />
-    </div>
   </div>
   <div class="box c">
     <div class="traffic-map">
       <img src="//images.wsdot.wa.gov/nwflow/flowmaps/bridges.gif" />
     </div>
   </div>
-  <div class="box d">D</div>
+  <div class="box d">
+    <div class="yokai">
+      <img src="//vignette.wikia.nocookie.net/yokaiwatch/images/0/07/Jibanyan.PNG/revision/latest?cb=20150811171356" />
+    </div>
+  </div>
   <div class="box e">E</div>
   <div class="box f">
     <div class="menu">
@@ -86,22 +84,3 @@
 
   </div>
 </div>
-
-
-  <%# <div id="messages" class="container">
-</div>
-<div id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2">
-        <div class="input-group">
-          <span class="input-group-addon">@</span>
-          <input id="username" type="text" class="form-control" placeholder="username">
-        </div><!-- /input-group -->
-      </div><!-- /.col-lg-6 -->
-      <div class="col-sm-10">
-        <input id="message-input" class="form-control" />
-      </div><!-- /.col-lg-6 -->
-    </div><!-- /.row -->
-  </div>
-</div> %>

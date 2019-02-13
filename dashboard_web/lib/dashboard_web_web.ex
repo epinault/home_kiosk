@@ -28,8 +28,9 @@ defmodule DashboardWebWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/dashboard_web_web/templates",
-                        namespace: DashboardWebWeb
+      use Phoenix.View,
+        root: "lib/dashboard_web_web/templates",
+        namespace: DashboardWebWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -37,7 +38,7 @@ defmodule DashboardWebWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import DashboardWebWeb.Router.Helpers
+      alias DashboardWebWeb.Router.Helpers, as: Routes
       import DashboardWebWeb.ErrorHelpers
       import DashboardWebWeb.Gettext
     end

@@ -13,6 +13,7 @@
 // to also remove its path from "config.paths.watched".
 // import "phoenix_html"
 import { Socket } from "phoenix";
+import css from "../css/app.css";
 
 // Import local files
 //

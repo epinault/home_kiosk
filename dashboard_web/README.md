@@ -23,3 +23,8 @@ DARKSKY_API_KEY=a1444104ea5812e15a06c2e086697a1b mix phx.server
 Darkskyx.forecast(47.5599289,-122.2984476)
 
 DashboardWeb.Weather.render(47.5599289,-122.2984476)
+
+QMAKE=/usr/local/opt/qt@5.11/bin/qmake MIX_TARGET=rpi3 mix firmware
+MIX_TARGET=rpi3 mix firmware.push --passphrase Jivet9manu1! nerves.local
+
+iex --cookie training --name host@0.0.0.0

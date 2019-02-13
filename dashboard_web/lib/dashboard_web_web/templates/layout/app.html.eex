@@ -14,9 +14,9 @@
   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
   integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
   crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
 
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%=  Routes.static_path(@conn, "/js/app.js") %>"></script>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
         <%= render @view_module, @view_template, assigns %>
     </div>
 
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%=  Routes.static_path(@conn, "/js/app.js") %>"></script>
 
 </body>
 

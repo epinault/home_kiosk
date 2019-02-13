@@ -32,8 +32,8 @@ defmodule DashboardWeb.Weather do
       %{
         "day" => short_name,
         "icon" => day["icon"],
-        "low" => day["temperatureLow"],
-        "high" => day["temperatureHigh"]
+        "low" => Kernel.round(day["temperatureLow"]),
+        "high" => Kernel.round(day["temperatureHigh"])
       }
     end)
   end
