@@ -14,6 +14,8 @@
   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
   integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
   crossorigin="anonymous"></script>
+
+  <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
 
     <script src="<%=  Routes.static_path(@conn, "/js/app.js") %>"></script>
@@ -22,9 +24,10 @@
 <body>
     <aside class="navbar">
         <nav>
-            <a class="active" href="#"><i class="fa fa-home"></i></a>
-            <a href="#"><i class="fa fa-utensils"></i></a>
-            <a href="#" class="power-off"><i class="fa fa-power-off"></i></a>
+            <a class="active" href="/"><i class="fa fa-home"></i></a>
+            <a href="/recipes"><i class="fa fa-utensils"></i></a>
+            <a href="/settings" class="settings"><i class="fa fa-cog"></i></a>
+            <a href="#" onclick="javascript:window.app.poweroff(); return false;" class="power-off"><i class="fa fa-power-off"></i></a>
         </nav>
     </aside>
 

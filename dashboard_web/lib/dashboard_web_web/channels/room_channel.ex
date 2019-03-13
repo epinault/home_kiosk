@@ -2,6 +2,9 @@ defmodule DashboardWebWeb.RoomChannel do
   use Phoenix.Channel
   require Logger
 
+  @from_range 1..100
+  @to_range 15..255
+
   def join("rooms:lobby", message, socket) do
     Process.flag(:trap_exit, true)
     # send(self, {"weather:update", message})
@@ -25,6 +28,16 @@ defmodule DashboardWebWeb.RoomChannel do
   #   {:noreply, socket}
   # end
 
+  def handle_in("brightness", %{"value" => value} = payload, socket) do
+    Logger.debug("Brightness: #{inspect(value)}")
+    broadcast(socket, "brightness", payload)
+
+    map_range(@from_range, @to_range, value)
+    |> DashboardWeb.Backlight.set_brightness()
+
+    {:noreply, socket}
+  end
+
   def handle_info("weather:update", socket) do
     res = DashboardWeb.Weather.render(47.5599289, -122.2984476)
     push(socket, "weather:update", %{msg: res})
@@ -38,8 +51,7 @@ defmodule DashboardWebWeb.RoomChannel do
     :ok
   end
 
-  # def handle_in("new:msg", msg, socket) do
-  #   broadcast!(socket, "new:msg", %{user: msg["user"], body: msg["body"]})
-  #   {:reply, {:ok, %{msg: msg["body"]}}, assign(socket, :user, msg["user"])}
-  # end
+  defp map_range(a1..a2, b1..b2, s) do
+    b1 + (s - a1) * (b2 - b1) / (a2 - a1)
+  end
 end

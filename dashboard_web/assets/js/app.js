@@ -21,28 +21,26 @@ import css from "../css/app.css";
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+let socket = new Socket("/socket", {
+  logger: (kind, msg, data) => {
+    console.log(`${kind}: ${msg}`, data);
+  }
+});
+
+var chan = socket.channel("rooms:lobby", {});
+var weather = $(".weather");
+var $messages = $("#messages");
+var $input = $("#message-input");
+var $username = $("#username");
+var brightnessSlider = document.getElementById("brightnessRange");
 
 class App {
   static init() {
-    let socket = new Socket("/socket", {
-      logger: (kind, msg, data) => {
-        console.log(`${kind}: ${msg}`, data);
-      }
-    });
-
     socket.connect({ user_id: "123" });
-
-    // debugger;
-    var weather = $(".weather");
-    var $messages = $("#messages");
-    var $input = $("#message-input");
-    var $username = $("#username");
-
     socket.onOpen(ev => console.log("OPEN", ev));
     socket.onError(ev => console.log("ERROR", ev));
     socket.onClose(e => console.log("CLOSE", e));
 
-    var chan = socket.channel("rooms:lobby", {});
     chan
       .join()
       .receive("ignore", () => console.log("auth error"))
@@ -55,39 +53,40 @@ class App {
       chan.push("weather:update", { color: "blue" });
     });
 
-    // $input.off("keypress").on("keypress", e => {
-    //   if (e.keyCode == 13) {
-    //     chan.push("new:msg", { user: $username.val(), body: $input.val() });
-    //     $input.val("");
-    //   }
-    // });
-
     chan.on("weather:update", msg => {
       console.log(msg);
       weather.empty();
       weather.append(msg.msg);
-
-      //   $messages.append(this.messageTemplate(msg));
-      //   scrollTo(0, document.body.scrollHeight);
     });
+
+    chan.on("brightness", payload => {
+      if (brightnessSlider) {
+        brightnessSlider.value = payload.value;
+      }
+    });
+
+    if (brightnessSlider) {
+      brightnessSlider.oninput = function() {
+        chan.push("brightness", { value: parseInt(this.value) });
+        console.log("Brightness:" + this.value);
+      };
+    }
 
     chan.on("user:entered", msg => {
       var username = this.sanitize(msg.user || "anonymous");
       $messages.append(`<br/><i>[${username} entered]</i>`);
     });
+
+    var mc = new Hammer(document);
+
+    // listen to events...
+    mc.on("doubletap", function(ev) {
+      chan.push("brightness", { value: 50 });
+    });
   }
 
-  static sanitize(html) {
-    return $("<div/>")
-      .text(html)
-      .html();
-  }
-
-  static messageTemplate(msg) {
-    let username = this.sanitize(msg.user || "anonymous");
-    let body = this.sanitize(msg.body);
-
-    return `<p><a href='#'>[${username}]</a>&nbsp; ${body}</p>`;
+  static poweroff() {
+    chan.push("brightness", { value: 1 });
   }
 }
 
@@ -95,4 +94,5 @@ $(() => {
   return App.init();
 });
 
+window.app = App;
 export default App;
