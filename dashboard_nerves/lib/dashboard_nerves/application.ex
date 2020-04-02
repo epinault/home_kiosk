@@ -3,7 +3,7 @@ defmodule DashboardNerves.Application do
   # for more information on OTP Applications
   @moduledoc false
 
-  @target Mix.Project.config()[:target]
+  @target Mix.target()
 
   use Application
 
@@ -46,6 +46,7 @@ defmodule DashboardNerves.Application do
     :os.cmd('udevadm trigger --type=subsystems --action=add')
     :os.cmd('udevadm trigger --type=devices --action=add')
     :os.cmd('udevadm settle --timeout=30')
+
     # Workaround a known bug with HTML5 canvas and rpi gpu
 
     System.put_env("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu")

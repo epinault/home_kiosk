@@ -24,7 +24,7 @@ config :shoehorn,
 
 config :logger, backends: [RingLogger]
 
-key = Path.join(System.user_home!(), ".ssh/id_rsa.pub")
+key = Path.join(System.user_home!(), ".ssh/id_ed25519.pub")
 unless File.exists?(key), do: Mix.raise("No SSH Keys found. Please generate an ssh key")
 
 config :nerves_firmware_ssh,
@@ -36,12 +36,8 @@ config :nerves_firmware_ssh,
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
 
-config :nerves_init_gadget,
-  ifname: "eth0",
-  address_method: :dhcpd,
-  mdns_domain: "nerves.local",
-  node_name: "kiosk",
-  node_host: :mdns_domain,
-  ssh_console_port: 22
+if Mix.target() != :host do
+  import_config "target.exs"
+end
 
-import_config "#{Mix.Project.config()[:target]}.exs"
+import_config "#{Mix.target()}.exs"

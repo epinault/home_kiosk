@@ -2,21 +2,22 @@ defmodule DashboardNerves.MixProject do
   use Mix.Project
 
   @target System.get_env("MIX_TARGET") || "host"
+  @all_targets [:rpi3]
+
+  @app :dashboard_nerves
 
   def project do
     [
-      app: :dashboard_nerves,
+      app: @app,
       version: "0.1.0",
       elixir: "~> 1.6",
-      target: @target,
-      archives: [nerves_bootstrap: "~> 1.0"],
-      deps_path: "deps/#{@target}",
-      build_path: "_build/#{@target}",
-      lockfile: "mix.lock.#{@target}",
+      archives: [nerves_bootstrap: "~> 1.6"],
       start_permanent: Mix.env() == :prod,
-      build_embedded: @target != "host",
+      build_embedded: Mix.target() != :host,
       aliases: [loadconfig: [&bootstrap/1]],
-      deps: deps()
+      deps: deps(),
+      releases: [{@app, release()}],
+      preferred_cli_target: [run: :host, test: :host]
     ]
   end
 
@@ -38,31 +39,33 @@ defmodule DashboardNerves.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nerves, "~> 1.3", runtime: false},
-      {:shoehorn, "~> 0.4"},
+      {:nerves, "~> 1.5", runtime: false},
+      {:shoehorn, "~> 0.6"},
       {:ring_logger, "~> 0.4"},
-      {:webengine_kiosk, "~> 0.2"}
-    ] ++ deps(@target)
-  end
+      {:webengine_kiosk, "~> 0.2"},
 
-  # Specify target specific dependencies
-  defp deps("host"), do: []
-
-  defp deps(target) do
-    [
-      {:nerves_runtime, "~> 0.6"},
-      {:nerves_init_gadget, "~> 0.4"},
-      {:nerves_network, "0.3.7"},
+      # Dependencies for all targets except :host
+      {:nerves_runtime, "~> 0.6", targets: @all_targets},
+      {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
+      {:nerves_network, "0.3.7", targets: @all_targets},
       # {:nerves_system_br, "1.4.5"},
-      {:nerves_time, "~> 0.2"}
-    ] ++ system(target)
+      {:nerves_time, "~> 0.2", targets: @all_targets},
+
+      # Dependencies for specific targets
+      # {:nerves_system_rpi3, "~> 1.5", runtime: false, targets: :rpi3},
+      {:dashboard_web, path: "../dashboard_web", targets: :rpi3},
+      {:kiosk_system_rpi3, "~> 1.8", runtime: false, targets: :rpi3}
+      # {:nerves_toolchain_arm_unknown_linux_gnueabihf, "~> 1.3.1", nerves: [compile: true]}
+    ]
   end
 
-  defp system("rpi3"),
-    do: [
-      {:dashboard_web, path: "../dashboard_web"},
-      {:kiosk_system_rpi3, "~> 1.0", runtime: false}
+  def release do
+    [
+      overwrite: true,
+      cookie: "#{@app}_cookie",
+      include_erts: &Nerves.Release.erts/0,
+      steps: [&Nerves.Release.init/1, :assemble],
+      strip_beams: Mix.env() == :prod
     ]
-
-  defp system(target), do: Mix.raise("Unknown MIX_TARGET: #{target}")
+  end
 end
