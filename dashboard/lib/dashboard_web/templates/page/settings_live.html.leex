@@ -1,0 +1,6 @@
+<div class="form-wrapper">
+  <h2>Settings</h2>
+  <%= Phoenix.HTML.Tag.form_tag "#", [phx_change: "config-changed"] %>
+    <p>Screen brightness</p>
+    <input type="range" min="1" max="100" value="<%= @brightness %>" class="slider" name="brightness">
+</div>

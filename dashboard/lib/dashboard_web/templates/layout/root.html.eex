@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= assigns[:page_title] %></title>
+<script src="https://kit.fontawesome.com/051c24b2b6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <%= csrf_meta_tag() %>
+  </head>
+  <body>
+    <header>
+      <aside class="navbar">
+          <nav>
+              <a class="active" href="/"><i class="fa fa-home"></i></a>
+              <a href="/menu"><i class="fa fa-utensils"></i></a>
+              <a href="/slideshow"><i class="fa fa-images"></i></a>
+              <a href="/dragonball"><i class="fa fa-dragon"></i></a>
+              <a href="/traffic"><i class="fa fa-car"></i></a>
+              <a href="/settings"><i class="fa fa-cog"></i></a>
+              <a href="#" onclick="javascript:window.app.poweroff(); return false;" class="power-off"><i class="fa fa-power-off"></i></a>
+          </nav>
+      </aside>
+    </header>
+
+    <main role="main"  class="grid-container">
+        <%= @inner_content %>
+    </main>
+
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

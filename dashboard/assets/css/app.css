@@ -1,0 +1,308 @@
+/* This file is for your main application css. */
+
+body {
+  margin: 0px;
+  background: #000;
+  color: #dadada;
+}
+
+/* Nav bar */
+a {
+  color: #dadada;
+  text-decoration: none;
+}
+
+.navbar {
+  width: 50px;
+  background-color: #555;
+  position: fixed;
+  height: 100%;
+}
+
+.navbar a {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  transition: all 0.3s ease;
+  font-size: 24px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: rgb(76, 144, 175);
+}
+
+.power-off {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.settings {
+  position: absolute;
+  bottom: 50px;
+  left: 0px;
+  right: 0px;
+}
+/* Main Grid */
+
+.grid-container {
+  margin-left: 50px; /* Same as the width of the sidenav */
+  padding: 2px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(7, [col] 104.57px);
+  grid-template-rows: repeat(4, [row] 117.4px) auto;
+  grid-gap: 2px;
+  /* background-color: #fff; */
+}
+
+.box {
+  background-color: #333333;
+  border: 1px #444 solid;
+  border-radius: 5px;
+  padding: 0px;
+  font-size: 150%;
+}
+
+.weather-box {
+  grid-column: col / span 5;
+  grid-row: row / span 2;
+}
+.traffic-box {
+  grid-column: col / span 3;
+  grid-row: row 3 / span 2;
+}
+.random-image-box {
+  grid-column: col 4 / span 2;
+  grid-row: row 3 / span 2;
+}
+
+.menu-box {
+  grid-column: col 6 / span 2;
+  grid-row: row 1 / span 4;
+}
+
+/* Weather */
+.weather {
+  display: grid;
+  grid-template-columns: repeat(7, [col] 70px);
+  grid-gap: 2px;
+  padding: 5px;
+}
+
+.weather-day {
+  font-size: 16px;
+  padding: 2px;
+  place-self: center;
+  text-align: center;
+}
+
+.weather-day .day-tile {
+  font-style: bold;
+}
+
+.weather-day .icon {
+  width: 48px;
+  height: 48px;
+}
+
+.weather-day .icon img {
+  height: 100%;
+  width: 100%;
+}
+
+.weather-day .temperature {
+  margin-top: 3px;
+}
+
+.low {
+  font-size: small;
+}
+
+.high {
+  font-weight: bolder;
+}
+
+.weather-heading {
+  grid-column: col / span 7;
+  grid-row: row;
+  font-size: large;
+}
+
+.timeline {
+  grid-column: col / span 7;
+  grid-row: row 3;
+}
+
+.timeline table,
+.timeline td {
+  font-size: small;
+  font-weight: normal;
+}
+.timeline th {
+  font-size: small;
+  font-weight: bold;
+}
+
+.timeline table {
+  border-collapse: collapse;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.timeline td,
+.timeline th {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.day1 {
+  grid-column: col 1;
+  grid-row: row 2;
+}
+
+.day2 {
+  grid-column: col 2;
+  grid-row: row 2;
+}
+
+.day3 {
+  grid-column: col 3;
+  grid-row: row 2;
+}
+
+.day4 {
+  grid-column: col 4;
+  grid-row: row 2;
+}
+
+.day5 {
+  grid-column: col 5;
+  grid-row: row 2;
+}
+
+.day6 {
+  grid-column: col 6;
+  grid-row: row 2;
+}
+
+.day7 {
+  grid-column: col 7;
+  grid-row: row 2;
+}
+
+/* traffic map */
+
+.traffic-map {
+  height: 100%;
+  width: 100%;
+}
+
+.traffic-map img {
+  height: 100%;
+  width: 100%;
+}
+
+/* Image Wrapper */
+
+.full-image {
+  flex: none;
+}
+
+.full-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 476px;
+  overflow: hidden;
+}
+
+/* Form Wrapper */
+
+.form-wrapper {
+  padding: 2px;
+}
+
+/* menu */
+
+.menu {
+  padding: 5px;
+  font-size: 12px;
+  word-wrap: break-word;
+}
+
+.menu-day {
+  text-align: center;
+}
+
+.menu-day h3 {
+  margin-bottom: 0px;
+  color: rgb(76, 144, 175);
+}
+
+.menu-day table {
+  width: 100%;
+  font-size: 12px;
+  table-layout: fixed;
+}
+
+.menu-day thead {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* yokai */
+
+.yokai {
+  height: 100%;
+  width: 100%;
+}
+
+.yokai img {
+  height: 100%;
+  width: 100%;
+}
+
+/* settings */
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #ee552f;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #ee552f;
+  cursor: pointer;
+}
+
+/* slideshow */
+.slideshow {
+  max-width: 728px;
+}

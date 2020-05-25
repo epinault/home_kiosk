@@ -1,0 +1,4 @@
+<main role="main"  class="grid-container">
+  <%= render @view_module, @view_template, assigns %>
+</main>
+

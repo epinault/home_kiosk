@@ -1,0 +1,125 @@
+<div class="wrapper">
+  <div class="box weather-box">
+    <div class="weather">
+      <div class="weather-heading">
+          <span>Seattle, WA • <%= @time %> • </span>
+      </div>
+
+      <%= for {day, index} <- Enum.with_index(assigns[:weather_data][:daily]) do %>
+          <div class="weather-day day<%= index + 1 %>">
+              <div class="day-title"><b><%= day["day"] %></b></div>
+              <div class="icon"><img src="/images/<%= day["icon"] %>.svg" /></div>
+              <div class="temperature high"><%= day["high"] %>° </div>
+              <div class="temperature low"><%= day["low"] %>° </div>
+          </div>
+      <% end %>
+
+      <div class="timeline">
+        <table>
+          <thead>
+            <tr>
+            <th></th>
+            <%= for {row, index} <- Enum.with_index(assigns[:weather_data][:hourly]) do %>
+              <th><%= row["hour"] %></th>
+            <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Forecast</td>
+              <%= for {row, index} <- Enum.with_index(assigns[:weather_data][:hourly]) do %>
+                <td><%= row["summary"] %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <td>Temp</td>
+              <%= for {row, index} <- Enum.with_index(assigns[:weather_data][:hourly]) do %>
+                <td><%= row["temperature"] %>°</td>
+              <% end %>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="box traffic-box">
+    <div class="traffic-map">
+      <img src="//images.wsdot.wa.gov/nwflow/flowmaps/bridges.gif" />
+    </div>
+  </div>
+  <div class="box random-image-box">
+    <div class="yokai">
+      <img src="https://ui-ex.com/images600_/goku-transparent-kid-3.png" />
+    </div>
+  </div>
+  <div class="box menu-box">
+    <div class="menu">
+      <div class="menu-day">
+          <h3>Monday</h3>
+          <table>
+            <thead>
+              <tr><td>Lunch</td><td>Dinner</td></tr>
+            </thead>
+            <tbody>
+              <tr><td>
+              Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td><td> Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td></tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="menu-day">
+          <h3>Monday</h3>
+          <table>
+            <thead>
+              <tr><td>Lunch</td><td>Dinner</td></tr>
+            </thead>
+            <tbody>
+              <tr><td>
+              Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td><td> Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td></tr>
+            </tbody>
+          </table>
+      </div>
+        <div class="menu-day">
+          <h3>Monday</h3>
+          <table>
+            <thead>
+              <tr><td>Lunch</td><td>Dinner</td></tr>
+            </thead>
+            <tbody>
+              <tr><td>
+              Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td><td> Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td></tr>
+            </tbody>
+          </table>
+      </div>
+              <div class="menu-day">
+          <h3>Monday</h3>
+          <table>
+            <thead>
+              <tr><td>Lunch</td><td>Dinner</td></tr>
+            </thead>
+            <tbody>
+              <tr><td>
+              Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td><td> Cucmber salade<br/>
+              LunSalmon with Beansch<br/>
+              dessert</td></tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+  </div>
+</div>
