@@ -32,14 +32,14 @@ defmodule DashboardNerves.MixProject do
   def application do
     [
       mod: {DashboardNerves.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :dashboard]
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nerves, "~> 1.5", runtime: false},
+      {:nerves, "~> 1.6", runtime: false, override: true},
       {:shoehorn, "~> 0.6"},
       {:ring_logger, "~> 0.4"},
       {:webengine_kiosk, "~> 0.2"},
@@ -47,13 +47,14 @@ defmodule DashboardNerves.MixProject do
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.6", targets: @all_targets},
       {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
-      {:nerves_network, "0.3.7", targets: @all_targets},
+      {:nerves_network, "0.5.5", targets: @all_targets},
       # {:nerves_system_br, "1.4.5"},
       {:nerves_time, "~> 0.2", targets: @all_targets},
+      {:toolshed, "~> 0.2", targets: @all_targets},
 
       # Dependencies for specific targets
       # {:nerves_system_rpi3, "~> 1.5", runtime: false, targets: :rpi3},
-      {:dashboard_web, path: "../dashboard_web", targets: :rpi3},
+      {:dashboard, path: "../dashboard"},
       {:kiosk_system_rpi3, "~> 1.8", runtime: false, targets: :rpi3}
       # {:nerves_toolchain_arm_unknown_linux_gnueabihf, "~> 1.3.1", nerves: [compile: true]}
     ]

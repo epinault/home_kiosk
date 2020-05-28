@@ -4,36 +4,46 @@ config :webengine_kiosk,
   uid: "kiosk",
   gid: "kiosk",
   data_dir: "/root/kiosk",
-  homepage: "http://localhost"
+  homepage: "http://nerves.local"
 
 config :nerves_network,
   regulatory_domain: "US"
 
 config :nerves_network, :default,
   wlan0: [
-    # System.get_env("Ici c est Paris"),
-    ssid: "Ici c est Paris",
-    # System.get_env("NERVES_NETWORK_PSK"),
-    psk: "4129mlking",
-
-    # ssid: "Outreach-Guest",
-    # System.get_env("NERVES_NETWORK_PSK"),
-    # psk: "OutreachTime!",
-
-    # String.to_atom(System.get_env("NERVES_NETWORK_MGMT"))
-    key_mgmt: :"WPA-PSK"
+    networks: [
+      [
+        ssid: "Ici C est Paris",
+        psk: "4129mlking",
+        key_mgmt: :"WPA-PSK",
+        priority: 100
+      ],
+      [
+        ssid: "Comcastic",
+        psk: "4129mlking",
+        key_mgmt: :"WPA-PSK",
+        priority: 10
+      ]
+    ]
   ]
 
-config :dashboard_web, DashboardWebWeb.Endpoint,
+config :dashboard, DashboardWeb.Endpoint,
   url: [host: "localhost"],
   http: [port: 80],
-  secret_key_base: "123456",
-  root: Path.dirname(__DIR__),
+  secret_key_base: "8vgemohuRC3kPBi4MqtUfKlTYxKvwzBFM/UBiUGzGSucS1kPAmhaipDdZYCQwmQB",
+  render_errors: [view: DashboardWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Dashboard.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "pzRkV534"],
   server: true,
-  render_errors: [view: DashboardWebWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Nerves.PubSub, adapter: Phoenix.PubSub.PG2],
   code_reloader: false,
-  check_origin: false
+  check_origin: false,
+  root: Path.dirname(__DIR__)
+
+# config :dashboard, DashboardWeb.Endpoint,
+#   url: [host: "localhost"],
+#   http: [port: 80],
+#   secret_key_base: "123456",
+#   root: Path.dirname(__DIR__),
 
 config :darkskyx,
   # System.get_env("DARKSKY_API_KEY"),
@@ -42,3 +52,5 @@ config :darkskyx,
     units: "us",
     lang: "en"
   ]
+
+config :tzdata, data_dir: "/root/tzdata"
