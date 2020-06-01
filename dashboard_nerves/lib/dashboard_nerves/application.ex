@@ -34,6 +34,7 @@ defmodule DashboardNerves.Application do
     webengine_opts = Application.get_all_env(:webengine_kiosk)
 
     [
+      DashboardNerves.NetworkWatcher
       # {WebengineKiosk, {webengine_opts, name: Display}}
     ]
   end

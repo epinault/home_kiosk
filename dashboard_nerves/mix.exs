@@ -43,14 +43,16 @@ defmodule DashboardNerves.MixProject do
       {:shoehorn, "~> 0.6"},
       {:ring_logger, "~> 0.4"},
       {:webengine_kiosk, "~> 0.2"},
+      {:poison, "~> 3.1.0"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.6", targets: @all_targets},
-      {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
-      {:nerves_network, "0.5.5", targets: @all_targets},
+      {:nerves_pack, "~> 0.3", targets: @all_targets},
+      # {:nerves_network, "0.5.5", targets: @all_targets},
       # {:nerves_system_br, "1.4.5"},
       {:nerves_time, "~> 0.2", targets: @all_targets},
       {:toolshed, "~> 0.2", targets: @all_targets},
+      {:vintage_net_wifi, "~> 0.7.0", targets: @all_targets},
 
       # Dependencies for specific targets
       # {:nerves_system_rpi3, "~> 1.5", runtime: false, targets: :rpi3},

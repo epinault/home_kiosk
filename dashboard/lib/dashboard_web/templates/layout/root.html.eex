@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><%= assigns[:page_title] %></title>
-<script src="https://kit.fontawesome.com/051c24b2b6.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/051c24b2b6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <%= csrf_meta_tag() %>
   </head>
@@ -13,12 +13,12 @@
     <header>
       <aside class="navbar">
           <nav>
-              <a class="active" href="/"><i class="fa fa-home"></i></a>
-              <a href="/menu"><i class="fa fa-utensils"></i></a>
-              <a href="/slideshow"><i class="fa fa-images"></i></a>
-              <a href="/dragonball"><i class="fa fa-dragon"></i></a>
-              <a href="/traffic"><i class="fa fa-car"></i></a>
-              <a href="/settings"><i class="fa fa-cog"></i></a>
+              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.IndexLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.IndexLive) %>"><i class="fa fa-home"></i></a>
+              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.MenuLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.MenuLive) %>"><i class="fa fa-utensils"></i></a>
+              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.SlideshowLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.SlideshowLive) %>"><i class="fa fa-images"></i></a>
+              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.DragonballLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.DragonballLive) %>"><i class="fa fa-dragon"></i></a>
+              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.MapLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.MapLive) %>"><i class="fa fa-car"></i></a>
+              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.SettingsLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.SettingsLive) %>"><i class="fa fa-cog"></i></a>
               <a href="#" onclick="javascript:window.app.poweroff(); return false;" class="power-off"><i class="fa fa-power-off"></i></a>
           </nav>
       </aside>

@@ -25,7 +25,7 @@ config :phoenix, :json_library, Jason
 
 config :darkskyx,
   # System.get_env("DARKSKY_API_KEY"),
-  api_key: "a1444104ea5812e15a06c2e086697a1b",
+  api_key: "ecf069f47243956467f8f870204c44a1",
   defaults: [
     units: "us",
     lang: "en"

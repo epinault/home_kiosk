@@ -72,27 +72,34 @@ a {
 }
 
 .weather-box {
-  grid-column: col / span 5;
+  grid-column: col / span 7;
   grid-row: row / span 2;
 }
 .traffic-box {
   grid-column: col / span 3;
   grid-row: row 3 / span 2;
 }
-.random-image-box {
+.lunch-box {
   grid-column: col 4 / span 2;
   grid-row: row 3 / span 2;
 }
+.dinner-box {
+  grid-column: col 6 / span 2;
+  grid-row: row 3 / span 2;
+}
 
-.menu-box {
+.textcenter {
+  text-align: center;
+}
+/* .menu-box {
   grid-column: col 6 / span 2;
   grid-row: row 1 / span 4;
-}
+} */
 
 /* Weather */
 .weather {
   display: grid;
-  grid-template-columns: repeat(7, [col] 70px);
+  grid-template-columns: repeat(7, [col] 104px);
   grid-gap: 2px;
   padding: 5px;
 }
@@ -149,6 +156,7 @@ a {
 .timeline th {
   font-size: small;
   font-weight: bold;
+  width: 75px;
 }
 
 .timeline table {
@@ -232,14 +240,30 @@ a {
 
 /* menu */
 
+.menu-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, [col] 149px);
+  grid-template-rows: 98%;
+  grid-column-gap: 2px;
+  /* background-color: #fff; */
+}
+
 .menu {
-  padding: 5px;
+  /* padding: 5px; */
   font-size: 12px;
   word-wrap: break-word;
 }
 
 .menu-day {
+  background-color: #333333;
+  border: 1px #444 solid;
+  border-radius: 5px;
+  padding: 0px;
   text-align: center;
+}
+
+.menu-day h2 {
+  /* color: rgb(76, 144, 175); */
 }
 
 .menu-day h3 {
@@ -247,28 +271,36 @@ a {
   color: rgb(76, 144, 175);
 }
 
-.menu-day table {
-  width: 100%;
-  font-size: 12px;
-  table-layout: fixed;
+.menu-day hr {
+  border: 1px solid;
+  width: 90px;
 }
 
-.menu-day thead {
-  font-size: 12px;
-  font-weight: bold;
+.menuday1 {
+  grid-column: col 1;
+  grid-row: row 1;
 }
 
-/* yokai */
-
-.yokai {
-  height: 100%;
-  width: 100%;
+.menuday2 {
+  grid-column: col 2;
+  grid-row: row 1;
 }
 
-.yokai img {
-  height: 100%;
-  width: 100%;
+.menuday3 {
+  grid-column: col 3;
+  grid-row: row 1;
 }
+
+.menuday4 {
+  grid-column: col 4;
+  grid-row: row 1;
+}
+
+.menuday5 {
+  grid-column: col 5;
+  grid-row: row 1;
+}
+
 
 /* settings */
 

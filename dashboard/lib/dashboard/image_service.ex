@@ -32,12 +32,6 @@ defmodule Dashboard.ImageService do
   defp load_images do
     filename = Path.join([:code.priv_dir(:dashboard), "static", "images.txt"])
 
-    IO.inspect(filename)
-
-    # @Manu Usually something like an asset would go into the projects `priv`
-    # directory. Then you could use `:code.priv_dir(:my_app)`
-    # where `:my_app` is the name of the Phoenix project.
-
     with {:ok, buffer} <- File.read(filename) do
       String.split(buffer, "\n")
     else

@@ -1,31 +1,24 @@
-<div>
-    <table>
-        <tr>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
-        </tr>
-        <tr>
-            <td>Something</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Dinner</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+<div class="menu-wrapper">
+    <%= for {menu, counter} <- Enum.with_index(@menus) do %>
+    <div class="day<%= counter + 1 %> menu menu-day">
+        <h1><%= date_to_dayname(menu["date"]) %></h1>
+        <h2>Lunch</h2>
+        <h3>Starter</h3>
+        <p><%= menu["lunch"]["starter"]%></p>
+        <h3>Entree</h3>
+        <p><%= menu["lunch"]["main course"] %></p>
+        <h3>Dessert</h3>
+        <p><%= menu["lunch"]["dessert"] %></p>
+        <hr />
+        
+        <h2>Dinner</h2>
+        <h3>Starter</h3>
+        <p><%= menu["dinner"]["starter"]%></p>
+        <h3>Entree</h3>
+        <p><%= menu["dinner"]["main course"] %></p>
+        <h3>Dessert</h3>
+        <p><%= menu["dinner"]["dessert"] %></p>
+    </div>
+    <% end %>
+
 </div>

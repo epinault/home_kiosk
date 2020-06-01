@@ -10,9 +10,12 @@ defmodule Dashboard.Application do
     children = [
       # Start the endpoint when the application starts
       DashboardWeb.Endpoint,
+      Dashboard.NetworkService,
       Dashboard.Backlight,
       Dashboard.ImageService,
-      Dashboard.ImageSearchService
+      Dashboard.ImageSearchService,
+      Dashboard.MenuService
+
       # Starts a worker by calling: Dashboard.Worker.start_link(arg)
       # {Dashboard.Worker, arg},
     ]
