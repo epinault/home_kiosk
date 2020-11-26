@@ -27,7 +27,7 @@ config :logger, backends: [RingLogger]
 key = Path.join(System.user_home!(), ".ssh/id_ed25519.pub")
 unless File.exists?(key), do: Mix.raise("No SSH Keys found. Please generate an ssh key")
 
-config :nerves_firmware_ssh,
+config :nerves_ssh,
   authorized_keys: [
     File.read!(key)
   ]

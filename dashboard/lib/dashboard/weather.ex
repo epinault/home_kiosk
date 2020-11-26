@@ -3,7 +3,7 @@ defmodule Dashboard.Weather do
 
   def retrieve_data(lat, long) do
     case Darkskyx.forecast(lat, long) do
-      {:ok, data} ->
+      {:ok, data, _} ->
         {:ok, convert_data(data)}
 
       {:error, error} ->

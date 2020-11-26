@@ -136,4 +136,4 @@ if [ "$(uname -s)" = "Darwin" ]; then
     fi
 fi
 
-printf "fwup:$FILESIZE,reboot\n" | cat - $FILENAME | ssh -s -p 8989 $SSH_OPTIONS $DESTINATION nerves_firmware_ssh
+cat "$FILENAME" | ssh -s $SSH_OPTIONS $DESTINATION fwup

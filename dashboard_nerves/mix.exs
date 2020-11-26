@@ -1,7 +1,7 @@
 defmodule DashboardNerves.MixProject do
   use Mix.Project
 
-  @target System.get_env("MIX_TARGET") || "host"
+  # @target System.get_env("MIX_TARGET") || "host"
   @all_targets [:rpi3]
 
   @app :dashboard_nerves
@@ -47,12 +47,12 @@ defmodule DashboardNerves.MixProject do
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.6", targets: @all_targets},
-      {:nerves_pack, "~> 0.3", targets: @all_targets},
+      {:nerves_pack, "~> 0.4.1", targets: @all_targets},
       # {:nerves_network, "0.5.5", targets: @all_targets},
       # {:nerves_system_br, "1.4.5"},
       {:nerves_time, "~> 0.2", targets: @all_targets},
       {:toolshed, "~> 0.2", targets: @all_targets},
-      {:vintage_net_wifi, "~> 0.7.0", targets: @all_targets},
+      {:vintage_net_wifi, "~> 0.9.0", targets: @all_targets},
 
       # Dependencies for specific targets
       # {:nerves_system_rpi3, "~> 1.5", runtime: false, targets: :rpi3},
