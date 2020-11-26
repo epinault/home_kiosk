@@ -60,6 +60,36 @@ defmodule DashboardWeb do
     end
   end
 
+  def live_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {DashboardWeb.LayoutView, "live.html"}
+
+      unquote(view_helpers())
+    end
+  end
+
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+      unquote(view_helpers())
+    end
+  end
+
+  defp view_helpers do
+    quote do
+      # Use all HTML functionality (forms, tags, etc)
+      use Phoenix.HTML
+
+      # Import basic rendering functionality (render, render_layout, etc)
+      import Phoenix.View
+
+      import DashboardWeb.ErrorHelpers
+      import DashboardWeb.Gettext
+      alias DashboardWeb.Router.Helpers, as: Routes
+    end
+  end
+
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """

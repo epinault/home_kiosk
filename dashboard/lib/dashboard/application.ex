@@ -9,6 +9,7 @@ defmodule Dashboard.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
+      {Phoenix.PubSub, name: Dashboard.PubSub},
       DashboardWeb.Endpoint,
       Dashboard.NetworkService,
       Dashboard.Backlight,

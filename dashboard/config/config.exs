@@ -12,7 +12,7 @@ config :dashboard, DashboardWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "8vgemohuRC3kPBi4MqtUfKlTYxKvwzBFM/UBiUGzGSucS1kPAmhaipDdZYCQwmQB",
   render_errors: [view: DashboardWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Dashboard.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub_server: Dashboard.PubSub,
   live_view: [signing_salt: "pzRkV534"]
 
 # Configures Elixir's Logger
