@@ -1,4 +1,9 @@
-defmodule Dashboard.Weather do
+defmodule Dashboard.Weather.Darksky do
+  @moduledoc """
+  A Darksky implementation retriever to get the daily
+  and hourly weather
+  """
+  @behaviour Dashboard.Weather.Retriever
   import Calendar.Strftime
 
   def retrieve_data(lat, long) do
@@ -6,8 +11,8 @@ defmodule Dashboard.Weather do
       {:ok, data, _} ->
         {:ok, convert_data(data)}
 
-      {:error, error} ->
-        %{error: error}
+      {:error, error, status_code} ->
+        {:error, error}
     end
   end
 
@@ -21,7 +26,7 @@ defmodule Dashboard.Weather do
       |> Enum.take(7)
       |> Enum.with_index()
       |> Enum.map(fn {day, index} ->
-        {:ok, d} = Calendar.DateTime.add(current_time, index * 86400)
+        {:ok, d} = Calendar.DateTime.add(current_time, index * 86_400)
         {:ok, short_name} = d |> strftime("%a")
 
         %{

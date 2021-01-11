@@ -1,6 +1,9 @@
-defmodule Dashboard.DuckduckgoSearch do
+defmodule Dashboard.ImageService.DuckduckgoSearch do
+  @moduledoc """
+  DuckDuckGo Images Search retriever
+  """
   use HTTPoison.Base
-  alias Dashboard.DuckduckgoSearch
+  alias Dashboard.ImageService.DuckduckgoSearch
 
   @base_url "https://duckduckgo.com"
 

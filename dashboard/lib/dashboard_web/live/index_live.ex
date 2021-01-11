@@ -1,4 +1,6 @@
 defmodule DashboardWeb.IndexLive do
+  @moduledoc false
+
   use Phoenix.LiveView
   @refresh_delay 1_000
   @weather_refresh_delay 1_800_000
@@ -22,13 +24,8 @@ defmodule DashboardWeb.IndexLive do
 
     menu = Dashboard.MenuService.today()
 
-    with {:ok, weather_data} <- Dashboard.Weather.retrieve_data(47.5599289, -122.2984476) do
-      {:ok, assign(socket, weather_data: weather_data, menu: menu, time: formatted_time)}
-    else
-      {:error, error} ->
-        Logger.error(fn -> "#{inspect(error)}" end)
-        {:ok, assign(socket, weather_data: %{:daily => []}, time: formatted_time)}
-    end
+    weather_data = Dashboard.Weather.retrieve()
+    {:ok, assign(socket, weather_data: weather_data, menu: menu, time: formatted_time)}
   end
 
   def handle_info(:update_time, socket) do
@@ -40,16 +37,17 @@ defmodule DashboardWeb.IndexLive do
     {:noreply, assign(socket, time: formatted_time)}
   end
 
-  def handle_info(:update_weather, socket) do
-    Process.send_after(self(), :update_weather, @weather_refresh_delay)
+  ## need pub sub for this?
+  # def handle_info(:update_weather, socket) do
+  #   Process.send_after(self(), :update_weather, @weather_refresh_delay)
 
-    weather_data = Dashboard.Weather.retrieve_data(47.5599289, -122.2984476)
+  #   weather_data = Dashboard.Weather.retrieve()
 
-    {:ok, time} = Calendar.DateTime.now("America/Los_Angeles")
-    {:ok, formatted_time} = time |> Calendar.Strftime.strftime("%H:%M:%S")
+  #   {:ok, time} = Calendar.DateTime.now("America/Los_Angeles")
+  #   {:ok, formatted_time} = time |> Calendar.Strftime.strftime("%H:%M:%S")
 
-    {:noreply, assign(socket, weather_data: weather_data, time: formatted_time)}
-  end
+  #   {:noreply, assign(socket, weather_data: weather_data, time: formatted_time)}
+  # end
 
   def handle_info(:update_today_menu, socket) do
     Process.send_after(self(), :update_today_menu, @menu_refresh_delay)

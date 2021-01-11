@@ -1,4 +1,6 @@
 defmodule DashboardWeb.MenuLive do
+  @moduledoc false
+
   use Phoenix.LiveView
   @refresh_delay 600_000
 

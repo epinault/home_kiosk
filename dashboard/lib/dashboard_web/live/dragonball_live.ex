@@ -1,8 +1,9 @@
 defmodule DashboardWeb.DragonballLive do
+  @moduledoc false
   use Phoenix.LiveView
   alias Dashboard.ImageSearchService
 
-  @refresh_rate 30000
+  @refresh_rate 30_000
 
   def render(assigns) do
     Phoenix.View.render(DashboardWeb.PageView, "dragonball_live.html", assigns)
@@ -25,6 +26,6 @@ defmodule DashboardWeb.DragonballLive do
   end
 
   defp get_image() do
-    ImageSearchService.rand_image()
+    Dashboard.ImageService.rand_image(Dashboard.GokuImages)
   end
 end

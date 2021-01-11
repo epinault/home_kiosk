@@ -1,4 +1,8 @@
 defmodule Dashboard.MenuService do
+  @moduledoc """
+  A menu service handler. So we can handle loading, and caching
+  the menu
+  """
   use GenServer
   require Logger
   alias Dashboard.NetworkService

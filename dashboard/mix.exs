@@ -41,6 +41,7 @@ defmodule Dashboard.MixProject do
       {:phoenix_live_reload, "~> 1.3", only: :dev},
       {:phoenix_live_view, "~> 0.15.0"},
       {:floki, ">= 0.0.0", only: :test},
+      {:credo, "~> 1.5", only: :dev},
       {:httpoison, "~> 1.6"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}

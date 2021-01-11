@@ -1,4 +1,7 @@
 defmodule Dashboard.Backlight do
+  @moduledoc """
+  A wrapper to handle the brightness of the screen
+  """
   use GenServer
 
   @brightness_file "/sys/class/backlight/rpi_backlight/brightness"
@@ -21,7 +24,6 @@ defmodule Dashboard.Backlight do
   end
 
   # GenServer Callbacks
-
   def init(_) do
     {:ok, 255}
   end

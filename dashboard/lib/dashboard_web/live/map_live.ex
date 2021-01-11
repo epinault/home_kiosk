@@ -1,4 +1,6 @@
 defmodule DashboardWeb.MapLive do
+  @moduledoc false
+
   use Phoenix.LiveView
   @refresh_delay 60_000
 

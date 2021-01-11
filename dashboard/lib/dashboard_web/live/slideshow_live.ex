@@ -1,7 +1,9 @@
 defmodule DashboardWeb.SlideshowLive do
+  @moduledoc false
+
   use Phoenix.LiveView
   alias Dashboard.ImageService
-  @refresh_delay 30000
+  @refresh_delay 30_000
 
   def render(assigns) do
     Phoenix.View.render(DashboardWeb.PageView, "slideshow_live.html", assigns)
@@ -22,6 +24,6 @@ defmodule DashboardWeb.SlideshowLive do
   end
 
   defp get_image_url do
-    ImageService.rand_image_url()
+    Dashboard.ImageService.rand_image(Dashboard.PersonalImages)
   end
 end

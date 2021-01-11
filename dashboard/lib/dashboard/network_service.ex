@@ -1,4 +1,13 @@
 defmodule Dashboard.NetworkService do
+  @moduledoc """
+  A simple abstraction to know wehter we have network access or not
+  in the raspberry pi. In the nerves code, we listen for UP of an interface
+  and then we call the ready! to tell that we are ready
+
+  Useful for startup race condition but we need to handle also
+  when network goes up and down (though we tend to cache stuff so
+  most pages will load)
+  """
   use GenServer
   require Logger
 

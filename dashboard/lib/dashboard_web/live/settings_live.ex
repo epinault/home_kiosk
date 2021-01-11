@@ -1,4 +1,6 @@
 defmodule DashboardWeb.SettingsLive do
+  @moduledoc false
+
   use Phoenix.LiveView
   alias Dashboard.Backlight
 

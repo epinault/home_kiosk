@@ -1,22 +1,35 @@
-defmodule Dashboard.ImageSearchService do
+defmodule Dashboard.ImageService do
+  @moduledoc """
+  a generic service for caching images details so we can handle
+  error more gracefully and make the update async
+  """
   use GenServer
   require Logger
   alias Dashboard.DuckduckgoSearch
   alias Dashboard.NetworkService
 
-  # Public API
   def start_link(opts) do
-    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+    name = Keyword.get(opts, :name)
+    GenServer.start_link(__MODULE__, opts, name: name)
+  end
+
+  def child_spec(opts) do
+    %{
+      id: Keyword.get(opts, :name),
+      start: {__MODULE__, :start_link, [opts]}
+    }
   end
 
   # Get an image from the index file generated
-  def rand_image() do
-    GenServer.call(__MODULE__, :rand_image)
+  def rand_image(pid) do
+    GenServer.call(pid, :rand_image)
   end
 
-  def init(_) do
-    keywords = "dragon ball"
-    {:ok, %{keywords: keywords, images: []}, {:continue, :init_search}}
+  def init(opts) do
+    retriever = Keyword.get(opts, :retriever)
+    keywords = Keyword.get(opts, :keywords)
+
+    {:ok, %{keywords: keywords, retriever: retriever, images: []}, {:continue, :init_search}}
   end
 
   def handle_call(:rand_image, _from, state) do
@@ -36,15 +49,8 @@ defmodule Dashboard.ImageSearchService do
 
   defp load_images(state) do
     if NetworkService.ready?() do
-      case DuckduckgoSearch.search_images(state[:keywords]) do
-        {:ok, images} ->
-          images
-
-        _ ->
-          # if any failure, we just ignore it and keep the previous state
-          Logger.error("Failed to load new images from DuckDuckgo..")
-          state[:images]
-      end
+      retriever = state[:retriever]
+      retriever.load_images(state)
     else
       Logger.warn("Not connected yet. Retrying in 5 seconds")
       Process.send_after(self(), :retry, 5000)

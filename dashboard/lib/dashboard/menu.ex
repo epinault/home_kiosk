@@ -1,4 +1,7 @@
 defmodule Dashboard.Menu do
+  @moduledoc """
+  N/A
+  """
   use HTTPoison.Base
   alias Dashboard.Menu
 
