@@ -10,7 +10,7 @@ defmodule Dashboard.ImageService.StaticList do
   @index_file "images.txt"
 
   def load_images(state) do
-    filename = Path.join([:code.priv_dir(:dashboard), "static", "images.txt"])
+    filename = Path.join([:code.priv_dir(:dashboard), "static", @index_file])
 
     case File.read(filename) do
       {:ok, buffer} ->
@@ -18,7 +18,7 @@ defmodule Dashboard.ImageService.StaticList do
 
       {:error, error} ->
         Logger.error(fn -> "#{inspect(error)}" end)
-        []
+        state[:images]
     end
   end
 

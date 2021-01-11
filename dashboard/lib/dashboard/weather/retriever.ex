@@ -7,7 +7,7 @@ defmodule Dashboard.Weather.Retriever do
   @callback retrieve_data(number(), number()) :: {:ok, any()} | {:error, any()}
 
   def retrieve(lat, long) do
-    retriever.retrieve_data(lat, long)
+    retriever().retrieve_data(lat, long)
   end
 
   def retriever() do

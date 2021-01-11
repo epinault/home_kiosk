@@ -5,7 +5,6 @@ defmodule Dashboard.ImageService do
   """
   use GenServer
   require Logger
-  alias Dashboard.DuckduckgoSearch
   alias Dashboard.NetworkService
 
   def start_link(opts) do

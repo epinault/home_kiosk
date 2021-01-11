@@ -11,7 +11,7 @@ defmodule Dashboard.Weather.Darksky do
       {:ok, data, _} ->
         {:ok, convert_data(data)}
 
-      {:error, error, status_code} ->
+      {:error, error, _status_code} ->
         {:error, error}
     end
   end

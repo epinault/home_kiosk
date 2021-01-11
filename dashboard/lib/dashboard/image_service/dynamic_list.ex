@@ -6,7 +6,6 @@ defmodule Dashboard.ImageService.DynamicList do
   @behaviour Dashboard.ImageService.Retriever
   require Logger
 
-  alias Dashboard.NetworkService
   alias Dashboard.ImageService.DuckduckgoSearch
 
   def load_images(state) do
