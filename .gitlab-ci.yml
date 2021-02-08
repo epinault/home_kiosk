@@ -11,6 +11,22 @@ before_script:
   - mix local.hex --force
   - mix deps.get
 
-mix:
+stages:
+  - build
+  - test
+
+test:
+  stage: test
   script:
     - mix test
+
+format:
+  stage: build
+  script:
+    - mix format --check-formatted
+
+lint:
+  stage: build
+  script:
+    - mix credo
+
