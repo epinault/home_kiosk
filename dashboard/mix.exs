@@ -44,6 +44,7 @@ defmodule Dashboard.MixProject do
       {:credo, "~> 1.5", only: :dev},
       {:httpoison, "~> 1.6"},
       {:jason, "~> 1.0"},
+      {:mockery, "~> 2.3", runtime: false},
       {:plug_cowboy, "~> 2.0"}
     ]
   end

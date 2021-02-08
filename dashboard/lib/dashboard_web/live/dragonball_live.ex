@@ -1,6 +1,7 @@
 defmodule DashboardWeb.DragonballLive do
   @moduledoc false
   use Phoenix.LiveView
+  import Mockery.Macro
   alias Dashboard.ImageSearchService
 
   @refresh_rate 30_000
@@ -26,6 +27,6 @@ defmodule DashboardWeb.DragonballLive do
   end
 
   defp get_image() do
-    Dashboard.ImageService.rand_image(Dashboard.GokuImages)
+    mockable(Dashboard.ImageService).rand_image(Dashboard.GokuImages)
   end
 end

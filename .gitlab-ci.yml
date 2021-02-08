@@ -18,15 +18,21 @@ stages:
 test:
   stage: test
   script:
-    - mix test
+    - cd dashboard && mix test
+
+
+compile:
+  stage: build
+  script:
+    - cd dashboard && mix compile --warnings-as-errors
 
 format:
   stage: build
   script:
-    - mix format --check-formatted
+    - cd dashboard && mix format --check-formatted
 
 lint:
   stage: build
   script:
-    - mix credo
+    - cd dashboard && mix credo
 
