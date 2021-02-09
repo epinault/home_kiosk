@@ -1,16 +1,20 @@
 defmodule DashboardWeb.SlideshowLiveTest do
+  @moduledoc false
   use DashboardWeb.ConnCase
   import Phoenix.LiveViewTest
+  import Mockery
+  import Mockery.Assertions
 
-  test "renders the home page", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/")
+  alias Dashboard.ImageService
 
-    assert render(view) =~ "<div class=\"weather-heading\">"
+  test "renders the slideshow page", %{conn: conn} do
+    mock(ImageService, :rand_image, "myimgurl")
 
-    # view
-    # |> element("#show-profile")
-    # |> render_click()
+    {:ok, view, _} = live(conn, "/slideshow")
 
-    # assert has_element?(view, "img[src*=#{user.avatar_url}]")
+    assert has_element?(view, "div[class*=full-image-wrapper]")
+    assert has_element?(view, "img[class*=full-image]")
+
+    assert_called(ImageService, :rand_image)
   end
 end

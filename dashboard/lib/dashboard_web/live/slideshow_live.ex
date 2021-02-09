@@ -2,7 +2,11 @@ defmodule DashboardWeb.SlideshowLive do
   @moduledoc false
 
   use Phoenix.LiveView
+  import Mockery.Macro
+
   alias Dashboard.ImageService
+  alias Dashboard.PersonalImages
+
   @refresh_delay 30_000
 
   def render(assigns) do
@@ -24,6 +28,6 @@ defmodule DashboardWeb.SlideshowLive do
   end
 
   defp get_image_url do
-    Dashboard.ImageService.rand_image(Dashboard.PersonalImages)
+    mockable(ImageService).rand_image(PersonalImages)
   end
 end

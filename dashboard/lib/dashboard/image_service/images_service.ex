@@ -32,7 +32,13 @@ defmodule Dashboard.ImageService do
   end
 
   def handle_call(:rand_image, _from, state) do
-    image = Enum.random(state[:images])
+    image =
+      if Enum.empty?(state[:images]) do
+        ""
+      else
+        Enum.random(state[:images])
+      end
+
     {:reply, image, state}
   end
 

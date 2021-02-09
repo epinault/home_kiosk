@@ -13,9 +13,9 @@
     <header>
       <aside class="navbar">
           <nav>
-              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.IndexLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.IndexLive) %>"><i class="fa fa-home"></i></a>
-              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.MenuLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.MenuLive) %>"><i class="fa fa-utensils"></i></a>
-              <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.SlideshowLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.SlideshowLive) %>"><i class="fa fa-images"></i></a>
+              <a class="home-button <%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.IndexLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.IndexLive) %>"><i class="fa fa-home"></i></a>
+              <a class="menu-button <%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.MenuLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.MenuLive) %>"><i class="fa fa-utensils"></i></a>
+              <a class="slideshow-button <%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.SlideshowLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.SlideshowLive) %>"><i class="fa fa-images"></i></a>
               <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.DragonballLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.DragonballLive) %>"><i class="fa fa-dragon"></i></a>
               <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.MapLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.MapLive) %>"><i class="fa fa-car"></i></a>
               <a class="<%= active_class(@conn, Routes.live_path(@conn, DashboardWeb.SettingsLive)) %>" href="<%= Routes.live_path(@conn, DashboardWeb.SettingsLive) %>"><i class="fa fa-cog"></i></a>

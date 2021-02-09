@@ -1,16 +1,19 @@
 defmodule DashboardWeb.SettingsLiveTest do
+  @moduledoc false
   use DashboardWeb.ConnCase
   import Phoenix.LiveViewTest
 
-  test "renders the home page", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/")
+  test "renders the settings page", %{conn: conn} do
+    {:ok, view, _html} = live(conn, "/settings")
 
-    assert render(view) =~ "<div class=\"weather-heading\">"
-
-    # view
-    # |> element("#show-profile")
-    # |> render_click()
-
-    # assert has_element?(view, "img[src*=#{user.avatar_url}]")
+    assert render(view) =~ "<p>Screen brightness</p>"
+    assert has_element?(view, "input[class*=slider]")
   end
+
+  # test "can change the slider settings", %{conn: conn} do
+  #   {:ok, view, _html} = live(conn, "/settings")
+
+  #   assert render(view) =~ "<p>Screen brightness</p>"
+  #   assert has_element?(view, "input[class*=slider]")
+  # end
 end

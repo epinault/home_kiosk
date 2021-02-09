@@ -1,4 +1,5 @@
 defmodule DashboardWeb.LayoutViewTest do
+  @moduledoc false
   use DashboardWeb.ConnCase, async: true
 
   # When testing helpers, you may want to import Phoenix.HTML and

@@ -1,4 +1,5 @@
 defmodule DashboardWeb.MapLiveTest do
+  @moduledoc false
   use DashboardWeb.ConnCase
   import Phoenix.LiveViewTest
 

@@ -1,4 +1,5 @@
 defmodule DashboardWeb.MenuLiveTest do
+  @moduledoc false
   use DashboardWeb.ConnCase
   import Phoenix.LiveViewTest
 
